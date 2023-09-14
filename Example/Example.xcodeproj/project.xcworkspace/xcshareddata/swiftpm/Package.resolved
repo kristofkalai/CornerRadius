@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "cornerradius",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/stateman92/CornerRadius",
+      "state" : {
+        "revision" : "a57fbe7e2a7aac7e621e09b78b85311ad1a2314e",
+        "version" : "0.0.1"
+      }
+    }
+  ],
+  "version" : 2
+}
