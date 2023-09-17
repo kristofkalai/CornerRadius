@@ -10,34 +10,50 @@ import CornerRadius
 
 struct ContentView: View {
     var body: some View {
-        VStack(spacing: 25) {
-            roundedCornerView
-
-            roundedCornerView
-                .environment(\.layoutDirection, .leftToRight)
-
-            roundedCornerView
-                .environment(\.layoutDirection, .rightToLeft)
+        ScrollView(showsIndicators: false) {
+            CenteredHStack {
+                VStack {
+                    ForEach([BorderType.internal, .default, .external], id: \.self, content: forEachContent(_:))
+                }
+            }
         }
-        .padding()
     }
 
-    private var roundedCornerView: some View {
-        RoundedCornerView(
-            corners: [.bottomTrailing, .topLeading],
-            border: .init(borderColor: .blue, lineWidth: 5),
-            radius: 25.0
-        ) {
-            VStack {
-                Image(systemName: "globe")
-                    .imageScale(.large)
-                    .foregroundColor(.accentColor)
-                Text("Hello, world!")
-            }
+    private func roundedCornerView(borderType: BorderType) -> some View {
+        let content = VStack {
+            Image(systemName: "globe")
+                .imageScale(.large)
+                .foregroundColor(.accentColor)
+            Text("Hello, world!")
+        }
             .padding()
             .padding()
             .background(Color.red.opacity(0.5))
+
+        let result = RoundedCornerView(
+            corners: [.bottomTrailing, .topLeading],
+            border: .init(borderColor: .blue, lineWidth: 5),
+            borderType: borderType,
+            radius: 25
+        ) {
+            content
         }
+
+        // or the same:
+        // let result = content
+        //     .rounderCorner(25, corners: [.bottomTrailing, .topLeading], border: .init(borderColor: .blue, lineWidth: 5), borderType: borderType)
+
+        return result.border(Color.green)
+    }
+
+    @ViewBuilder private func forEachContent(_ borderType: BorderType) -> some View {
+        roundedCornerView(borderType: borderType)
+
+        roundedCornerView(borderType: borderType)
+            .environment(\.layoutDirection, .leftToRight)
+
+        roundedCornerView(borderType: borderType)
+            .environment(\.layoutDirection, .rightToLeft)
     }
 }
 

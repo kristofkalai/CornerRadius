@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		589AA7342AB7C40F00958AEC /* CenteredHStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589AA7332AB7C40F00958AEC /* CenteredHStack.swift */; };
 		58B89F892AB3AC6200991C0B /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B89F882AB3AC6200991C0B /* ExampleApp.swift */; };
 		58B89F8B2AB3AC6200991C0B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B89F8A2AB3AC6200991C0B /* ContentView.swift */; };
 		58B89F8D2AB3AC6300991C0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58B89F8C2AB3AC6300991C0B /* Assets.xcassets */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		589AA7332AB7C40F00958AEC /* CenteredHStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenteredHStack.swift; sourceTree = "<group>"; };
 		58B89F852AB3AC6200991C0B /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58B89F882AB3AC6200991C0B /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		58B89F8A2AB3AC6200991C0B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				58B89F8A2AB3AC6200991C0B /* ContentView.swift */,
 				58B89F8C2AB3AC6300991C0B /* Assets.xcassets */,
 				58B89F8E2AB3AC6300991C0B /* Preview Content */,
+				589AA7332AB7C40F00958AEC /* CenteredHStack.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				58B89F8B2AB3AC6200991C0B /* ContentView.swift in Sources */,
 				58B89F892AB3AC6200991C0B /* ExampleApp.swift in Sources */,
+				589AA7342AB7C40F00958AEC /* CenteredHStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,7 +596,7 @@
 			repositoryURL = "https://github.com/stateman92/CornerRadius";
 			requirement = {
 				kind = exactVersion;
-				version = 0.0.1;
+				version = 0.0.4;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
