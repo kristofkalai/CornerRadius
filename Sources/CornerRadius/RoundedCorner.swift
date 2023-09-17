@@ -13,9 +13,9 @@ public struct RoundedCorner {
     public static let defaultCorners: RectCorner = .allCorners
     public static let defaultLayoutDirection = LayoutDirection.leftToRight
 
-    private let radii: (CGRect) -> CGSize
-    private let corners: RectCorner
-    private let isLeftToRight: Bool
+    let radii: (CGRect) -> CGSize
+    let corners: RectCorner
+    let isLeftToRight: Bool
 
     public init(
         radii: @escaping (CGRect) -> CGSize = defaultRadii,
