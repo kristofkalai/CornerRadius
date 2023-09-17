@@ -12,27 +12,30 @@ extension View {
         _ radius: CGFloat,
         corners: RectCorner = RoundedCorner.defaultCorners,
         isLeftToRight: Bool,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        rounderCorner(.init(radius: radius, corners: corners, isLeftToRight: isLeftToRight), border: border)
+        rounderCorner(.init(radius: radius, corners: corners, isLeftToRight: isLeftToRight), border: border, boderType: boderType)
     }
 
     public func rounderCorner(
         _ radii: CGSize,
         corners: RectCorner = RoundedCorner.defaultCorners,
         isLeftToRight: Bool,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        rounderCorner(.init(radii: radii, corners: corners, isLeftToRight: isLeftToRight), border: border)
+        rounderCorner(.init(radii: radii, corners: corners, isLeftToRight: isLeftToRight), border: border, boderType: boderType)
     }
 
     public func rounderCorner(
         _ radii: @escaping (CGRect) -> CGSize = RoundedCorner.defaultRadii,
         corners: RectCorner = RoundedCorner.defaultCorners,
         isLeftToRight: Bool,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        rounderCorner(.init(radii: radii, corners: corners, isLeftToRight: isLeftToRight), border: border)
+        rounderCorner(.init(radii: radii, corners: corners, isLeftToRight: isLeftToRight), border: border, boderType: boderType)
     }
 }
 
@@ -41,36 +44,41 @@ extension View {
         _ radius: CGFloat,
         corners: RectCorner = RoundedCorner.defaultCorners,
         layoutDirection: LayoutDirection = RoundedCorner.defaultLayoutDirection,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        rounderCorner(radius, corners: corners, isLeftToRight: layoutDirection.isLeftToRight, border: border)
+        rounderCorner(radius, corners: corners, isLeftToRight: layoutDirection.isLeftToRight, border: border, boderType: boderType)
     }
 
     public func rounderCorner(
         _ radii: CGSize,
         corners: RectCorner = RoundedCorner.defaultCorners,
         layoutDirection: LayoutDirection = RoundedCorner.defaultLayoutDirection,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        rounderCorner(radii, corners: corners, isLeftToRight: layoutDirection.isLeftToRight, border: border)
+        rounderCorner(radii, corners: corners, isLeftToRight: layoutDirection.isLeftToRight, border: border, boderType: boderType)
     }
 
     public func rounderCorner(
         _ radii: @escaping (CGRect) -> CGSize = RoundedCorner.defaultRadii,
         corners: RectCorner = RoundedCorner.defaultCorners,
         layoutDirection: LayoutDirection = RoundedCorner.defaultLayoutDirection,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        rounderCorner(radii, corners: corners, isLeftToRight: layoutDirection.isLeftToRight, border: border)
+        rounderCorner(radii, corners: corners, isLeftToRight: layoutDirection.isLeftToRight, border: border, boderType: boderType)
     }
 }
 
 extension View {
     public func rounderCorner(
         _ roundedCorner: RoundedCorner,
-        border: BorderConfiguration
+        border: BorderConfiguration,
+        boderType: BorderType = .default
     ) -> some View {
-        clipShape(roundedCorner)
+        padding(boderType.padding(borderWidth: border.lineWidth))
+            .clipShape(roundedCorner)
             .overlay(roundedCorner.stroke(border: border))
     }
 }
