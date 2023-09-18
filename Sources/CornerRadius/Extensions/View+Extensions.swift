@@ -77,23 +77,23 @@ extension View {
         border: BorderConfiguration,
         borderType: BorderType = .default
     ) -> some View {
-        let adjustedRoundedCornerForClipShape = RoundedCorner(radii: {
-            let radii = roundedCorner.radii($0)
-            if borderType == .external {
-                return CGSize(width: radii.width - border.lineWidth / 2, height: radii.height - border.lineWidth / 2)
-            }
-            return radii
-        }, corners: roundedCorner.corners, isLeftToRight: roundedCorner.isLeftToRight)
-        let adjustedRoundedCornerForOverlay = RoundedCorner(radii: {
-            let radii = roundedCorner.radii($0)
-            if borderType == .internal {
-                return CGSize(width: radii.width - border.lineWidth / 2, height: radii.height - border.lineWidth / 2)
-            }
-            return radii
-        }, corners: roundedCorner.corners, isLeftToRight: roundedCorner.isLeftToRight)
-        return clipShape(adjustedRoundedCornerForClipShape)
-            .padding(borderType == .external ? border.lineWidth / 2 : .zero)
-            .overlay(adjustedRoundedCornerForOverlay.stroke(border: border).padding(borderType == .internal ? border.lineWidth / 2 : .zero))
-            .padding(borderType == .external ? border.lineWidth / 2 : .zero)
+        clip(shape: roundedCorner, with: border, borderType: borderType)
+    }
+}
+
+extension View {
+    public func clip<T: Shape>(
+        shape: T,
+        with border: BorderConfiguration,
+        borderType: BorderType = .default
+    ) -> some View {
+        let adjustedWidth = border.lineWidth / 2
+        let adjustedSize = CGSize(width: adjustedWidth, height: adjustedWidth)
+        let adjustedShapeForClipShape = InsettablePathShape(inset: borderType == .external ? adjustedSize : .zero, path: shape.path(in:))
+        let adjustedRoundedCornerForOverlay = InsettablePathShape(inset: borderType == .internal ? adjustedSize : .zero, path: shape.path(in:))
+        return clipShape(adjustedShapeForClipShape)
+            .padding(borderType == .external ? adjustedWidth : .zero)
+            .overlay(adjustedRoundedCornerForOverlay.stroke(border: border).padding(borderType == .internal ? adjustedWidth : .zero))
+            .padding(borderType == .external ? adjustedWidth : .zero)
     }
 }
