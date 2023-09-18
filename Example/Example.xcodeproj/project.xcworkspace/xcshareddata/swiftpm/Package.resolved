@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/stateman92/CornerRadius",
       "state" : {
-        "revision" : "2415d65c9e7ffb3a84d5020864dd6686e38bce0c",
-        "version" : "0.0.4"
+        "revision" : "df97041f2d98a2a2c051250df914d98b16460e3f",
+        "version" : "0.0.7"
       }
     }
   ],

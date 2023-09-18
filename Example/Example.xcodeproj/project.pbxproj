@@ -596,7 +596,7 @@
 			repositoryURL = "https://github.com/stateman92/CornerRadius";
 			requirement = {
 				kind = exactVersion;
-				version = 0.0.4;
+				version = 0.0.7;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
