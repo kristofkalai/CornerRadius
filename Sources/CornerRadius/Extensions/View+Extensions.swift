@@ -91,9 +91,31 @@ extension View {
             }
             return radii
         }, corners: roundedCorner.corners, isLeftToRight: roundedCorner.isLeftToRight)
-        return clipShape(adjustedRoundedCornerForClipShape)
-            .padding(borderType == .external ? border.lineWidth / 2 : .zero)
-            .overlay(adjustedRoundedCornerForOverlay.stroke(border: border).padding(borderType == .internal ? border.lineWidth / 2 : .zero))
-            .padding(borderType == .external ? border.lineWidth / 2 : .zero)
+        return clip(clipShape: adjustedRoundedCornerForClipShape, overlayShape: adjustedRoundedCornerForOverlay, with: border, borderType: borderType)
+    }
+}
+
+extension View {
+    public func clip<T: Shape>(
+        shape: T,
+        with border: BorderConfiguration,
+        borderType: BorderType = .default
+    ) -> some View {
+        clip(clipShape: shape, overlayShape: shape, with: border, borderType: borderType)
+    }
+}
+
+extension View {
+    public func clip<T: Shape, S: Shape>(
+        clipShape shape: T,
+        overlayShape: S,
+        with border: BorderConfiguration,
+        borderType: BorderType = .default
+    ) -> some View {
+        let adjustedWidth = border.lineWidth / 2
+        return clipShape(shape)
+            .padding(borderType == .external ? adjustedWidth : .zero)
+            .overlay(overlayShape.stroke(border: border).padding(borderType == .internal ? adjustedWidth : .zero))
+            .padding(borderType == .external ? adjustedWidth : .zero)
     }
 }
