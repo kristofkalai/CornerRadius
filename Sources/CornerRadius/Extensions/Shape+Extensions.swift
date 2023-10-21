@@ -1,6 +1,6 @@
 //
 //  Shape+Extensions.swift
-//  
+//
 //
 //  Created by Kristóf Kálai on 2023. 09. 14..
 //
